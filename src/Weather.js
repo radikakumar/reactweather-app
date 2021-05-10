@@ -5,7 +5,7 @@ export default function Weather(){
 
     return (
       <div className= "container">
-      <img src ="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"/>
+      <img src ="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt ="cloudy"/>
       <br></br>
       <h2>20°C|°F </h2>
       <br></br>
