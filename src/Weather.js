@@ -9,7 +9,7 @@ export default function Weather(){
 let [Ready, setReady]= useState [false]
 let [Dataweather, setDataweather]= useState({})
 function displayWeather(response){
-setReady(true);
+setReady(true)
 setDataweather({
 temperature:response.data.main.temp,
 Humidity: response.data.main.humidity,
@@ -26,14 +26,14 @@ if (Ready) {return (
   <img src ="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt ="cloudy"/>
   <br></br>
   <h2>{Math.round(setDataweather.temperature)}°C|°F </h2>
-  <p>New York</p>
+  <h3>New York</h3>
   <br></br>
   <span>Humidity:{setDataweather.Humidity}% :</span>
   <span> Windspeed:{setDataweather.Wind}km/h</span>
   <p>Feelslike: {setDataweather.feels}°C</p>
-  <h3>
+  <h4>
   Date: Monday 10 May 2021
-  </h3>
+  </h4>
 
  <form>
 
