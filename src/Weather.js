@@ -17,6 +17,7 @@ Wind:response.data.main.wind,
 feels:response.data.main.feels_like,
 city:response.data.name,
 
+
 })
 
 
@@ -25,7 +26,7 @@ if (Ready) {return (
   <img src ="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt ="cloudy"/>
   <br></br>
   <h2>{Math.round(setDataweather.temperature)}°C|°F </h2>
-  <p>{setDataweather.city}</p>
+  <p>New York</p>
   <br></br>
   <span>Humidity:{setDataweather.Humidity}% :</span>
   <span> Windspeed:{setDataweather.Wind}km/h</span>
