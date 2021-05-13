@@ -1,7 +1,20 @@
 import React from "react";
-
+import axios from "axios";
 import "./Weather.css";
 export default function Weather(){
+
+
+function displayWeather(response){
+  console.log (response)
+}
+
+let key= "2f9f7ec47cab1795a041f2ec45034bf2"
+let city= "New York"
+let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+axios.get(Url).then(displayWeather)
+
+
+
 
     return (
       <div className= "container">
