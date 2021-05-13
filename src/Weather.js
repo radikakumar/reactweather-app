@@ -16,10 +16,9 @@ temperature:response.data.main.temp,
 Humidity: response.data.main.humidity,
 Wind:response.data.main.wind,
 feels:response.data.main.feels_like,
-city:response.data.name,
+city:response.data.name
 
-
-})
+})}
 
 
 if (Ready) {return (
@@ -72,7 +71,7 @@ if (Ready) {return (
   let key= "2f9f7ec47cab1795a041f2ec45034bf2"
  let city= "New York"
  let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
- axios.get(Url).then(displayWeather) 
+ axios.get(Url).then(displayWeather); 
   
  return   (
   <Loader
@@ -87,6 +86,6 @@ if (Ready) {return (
   
 }
  
- }
+ 
       
 
