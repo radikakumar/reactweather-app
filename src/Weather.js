@@ -1,60 +1,90 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import "./Weather.css";
+import Loader from "react-loader-spinner";
+
+
 export default function Weather(){
 
-
+let [Ready, setReady]= useState [false]
+let [Dataweather, setDataweather]= useState({})
 function displayWeather(response){
-  console.log (response)
-}
+setReady(true);
+setDataweather({
+temperature:response.data.main.temp,
+Humidity: response.data.main.humidity,
+Wind:response.data.main.wind,
+feels:response.data.main.feels_like,
+city:response.data.name,
 
-let key= "2f9f7ec47cab1795a041f2ec45034bf2"
-let city= "New York"
-let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
-axios.get(Url).then(displayWeather)
+})
 
 
+if (Ready) {return (
+  <div className= "container">
+  <img src ="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt ="cloudy"/>
+  <br></br>
+  <h2>{Math.round(setDataweather.temperature)}°C|°F </h2>
+  <p>{setDataweather.city}</p>
+  <br></br>
+  <span>Humidity:{setDataweather.Humidity}% :</span>
+  <span> Windspeed:{setDataweather.Wind}km/h</span>
+  <p>Feelslike: {setDataweather.feels}°C</p>
+  <h3>
+  Date: Monday 10 May 2021
+  </h3>
 
+ <form>
 
-    return (
-      <div className= "container">
-      <img src ="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt ="cloudy"/>
-      <br></br>
-      <h2>20°C|°F </h2>
-      <br></br>
-      <span>Humidity:10% :</span>
-      <span> Windspeed:3km/h</span>
-      <h3>
-      Date: Monday 10 May 2021
-      </h3>
-    
-     <form>
-    
-      <input type ="search" placeholder="Enter a city"/>
-    
-       <input type ="submit"  value ="Search" />
-     </form>
-     <br></br>
-     <p>Forecast</p>
-     <div className="container">
-       <div className="row">
-         <div className="col">
-         <span>Mon: 20°C|°F </span> 
-          </div>
-          <div className="col">
-          <span>Tues: 20°C|°F </span>
-    </div>
-    <div className="col">
-         <span>Wed: 20°C|°F </span>      
-    </div>
-          
-    <div className="col">
-        <span>Thurs: 20°C|°F </span></div>
-  </div>
+  <input type ="search" placeholder="Enter a city"/>
+
+   <input type ="submit"  value ="Search" />
+ </form>
+ <br></br>
+ <p>Forecast</p>
+ <div className="container">
+   <div className="row">
+     <div className="col">
+     <span>Mon: 20°C|°F </span> 
+      </div>
+      <div className="col">
+      <span>Tues: 20°C|°F </span>
+</div>
+<div className="col">
+     <span>Wed: 20°C|°F </span>      
+</div>
+      
+<div className="col">
+    <span>Thurs: 20°C|°F </span></div>
+</div>
 </div>
 
 
-     </div>
-       
-    );
+ </div>
+   
+);
+
+
+
+} else {
+  let key= "2f9f7ec47cab1795a041f2ec45034bf2"
+ let city= "New York"
+ let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+ axios.get(Url).then(displayWeather) 
+  
+ return   (
+  <Loader
+    type="Audio"
+    color="#00BFFF"
+    height={100}
+    width={100}
+  
+  />
+ );
 }
+  
+}
+ 
+ }
+      
+
