@@ -9,6 +9,7 @@ export default function Weather(){
 let [Ready,setReady]= useState[false]
 let [Dataweather,setDataweather]= useState({})
 function displayWeather(response){
+  console.log(response.data)
 setReady(true)
 setDataweather({
 temperature:response.data.main.temp,
@@ -25,12 +26,12 @@ if (Ready) {return (
   <div className= "container">
   <img src ="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt ="cloudy"/>
   <br></br>
-  <h2>{Math.round(weatherData.temperature)}°C|°F </h2>
-  <h3>{weatherData.city}</h3>
+  <h2>{Math.round(Dataweather.temperature)}°C|°F </h2>
+  <h3>{Dataweather.city}</h3>
   <br></br>
-  <span>Humidity:{weatherData.Humidity}% :</span>
-  <span> Windspeed:{weatherData.Wind}km/h</span>
-  <p>Feelslike: {weatherData.feels}°C</p>
+  <span>Humidity:{Dataweather.Humidity}% :</span>
+  <span> Windspeed:{Dataweather.Wind}km/h</span>
+  <p>Feelslike: {Dataweather.feels}°C</p>
   <h4>
   Date: Monday 10 May 2021
   </h4>
