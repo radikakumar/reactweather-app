@@ -22,7 +22,7 @@ icon:`http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`,
 description: response.data.weather[0].description,
 })}
 
-function Search(city){
+function Search(){
   let key= "2f9f7ec47cab1795a041f2ec45034bf2"
   let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(Url).then(displayWeather); 
@@ -30,7 +30,7 @@ function Search(city){
 }
 function handleSubmit(event){
   event.preventDefault();
-  Search(city);
+  Search();
 }
 
 function updateCity (event){
@@ -53,7 +53,7 @@ if (Ready) {return (
 
  <form onSubmit={handleSubmit}>
 
-  <input type ="search" placeholder="Enter a city" onchange={updateCity}/>
+  <input type ="search" placeholder="Enter a city" onclick={updateCity}/>
 
    <input type ="submit"  value ="Search"/>
  </form>
@@ -84,7 +84,7 @@ if (Ready) {return (
 
 
 } else {
-  Search(city);
+  Search();
  return   (
   <Loader
     type="Audio"
