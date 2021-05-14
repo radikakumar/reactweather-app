@@ -17,14 +17,14 @@ Humidity: response.data.main.humidity,
 Wind:response.data.wind.speed,
 feels:response.data.main.feels_like,
 city:response.data.name,
-icon:`http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`,
+icon:`http://openweathermap.org/img/wn/${response.weather[0].main}@2x.png`,
 description: response.data.weather[0].description,
 })}
 
 
 if (Ready) {return (
   <div className= "container">
-  <img src ={Dataweather.icon} alt ="cloudy"/>
+  <img src ={Dataweather.icon} alt ={Dataweather.description}/>
   <br></br>
   <h2>{Math.round(Dataweather.temperature)}°C|°F </h2>
   <h3>{Dataweather.city}</h3>
