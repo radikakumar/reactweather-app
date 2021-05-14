@@ -4,10 +4,11 @@ import "./Weather.css";
 import Loader from "react-loader-spinner";
 
 
-export default function Weather(){
+export default function Weather(props){
 
 let [Ready,setReady]= useState(false);
 let [Dataweather,setDataweather]= useState({})
+let [city, setCity] = useState(props.defaultCity)
 function displayWeather(response){
   console.log(response.data)
 setReady(true)
@@ -17,10 +18,24 @@ Humidity: response.data.main.humidity,
 Wind:response.data.wind.speed,
 feels:response.data.main.feels_like,
 city:response.data.name,
-icon:`http://openweathermap.org/img/wn/${response.weather[0].main}@2x.png`,
+icon:`http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`,
 description: response.data.weather[0].description,
 })}
 
+function Search(){
+  let key= "2f9f7ec47cab1795a041f2ec45034bf2"
+  let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+  axios.get(Url).then(displayWeather); 
+   
+}
+function handleSubmit(event){
+  event.preventDefault();
+  Search();
+}
+
+function updateCity (event){
+  setCity (event.target.value);
+}
 
 if (Ready) {return (
   <div className= "container">
@@ -36,11 +51,11 @@ if (Ready) {return (
   Date: Monday 10 May 2021
   </h4>
 
- <form>
+ <form onSubmit={handleSubmit}>
 
-  <input type ="search" placeholder="Enter a city"/>
+  <input type ="search" placeholder="Enter a city" onchange={updateCity}/>
 
-   <input type ="submit"  value ="Search" />
+   <input type ="submit"  value ="Search"/>
  </form>
  <br></br>
  <p>Forecast</p>
@@ -69,11 +84,7 @@ if (Ready) {return (
 
 
 } else {
-  let key= "2f9f7ec47cab1795a041f2ec45034bf2"
- let city= "Paris"
- let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
- axios.get(Url).then(displayWeather); 
-  
+  Search();
  return   (
   <Loader
     type="Audio"
