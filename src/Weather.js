@@ -6,7 +6,7 @@ import Loader from "react-loader-spinner";
 
 export default function Weather(){
 
-let [Ready,setReady]= useState[false]
+let [Ready,setReady]= useState(false);
 let [Dataweather,setDataweather]= useState({})
 function displayWeather(response){
   console.log(response.data)
@@ -14,23 +14,24 @@ setReady(true)
 setDataweather({
 temperature:response.data.main.temp,
 Humidity: response.data.main.humidity,
-Wind:response.data.main.wind,
+Wind:response.data.wind.speed,
 feels:response.data.main.feels_like,
-city:response.data.name
-
+city:response.data.name,
+icon:`http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`,
+description: response.data.weather[0].description,
 })}
 
 
 if (Ready) {return (
   <div className= "container">
-  <img src ="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt ="cloudy"/>
+  <img src ={Dataweather.icon} alt ={Dataweather.description}/>
   <br></br>
   <h2>{Math.round(Dataweather.temperature)}°C|°F </h2>
   <h3>{Dataweather.city}</h3>
   <br></br>
   <span>Humidity:{Dataweather.Humidity}% :</span>
-  <span> Windspeed:{Dataweather.Wind}km/h</span>
-  <p>Feelslike: {Dataweather.feels}°C</p>
+  <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
+  <p>Feelslike: {Math.round(Dataweather.feels)}°C</p>
   <h4>
   Date: Monday 10 May 2021
   </h4>
@@ -69,7 +70,7 @@ if (Ready) {return (
 
 } else {
   let key= "2f9f7ec47cab1795a041f2ec45034bf2"
- let city= "New York"
+ let city= "Paris"
  let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
  axios.get(Url).then(displayWeather); 
   
