@@ -7,8 +7,9 @@ import Loader from "react-loader-spinner";
 export default function Weather(props){
 
 let [Ready,setReady]= useState(false);
-let [Dataweather,setDataweather]= useState({})
-let [city, setCity] = useState(props.defaultCity)
+let [Dataweather,setDataweather]= useState({});
+let [city, setCity] = useState(props.defaultCity);
+let [Message,setMessage]=useState("");
 function displayWeather(response){
   console.log(response.data)
 setReady(true)
@@ -31,10 +32,11 @@ function Search(){
 function handleSubmit(event){
   event.preventDefault();
   Search();
+  setMessage(Dataweather.city);
 }
 
-function updateCity (event){
-  setCity (event.target.value);
+function updateCity(event){
+  setCity(event.target.value);
 }
 
 if (Ready) {return (
@@ -42,7 +44,7 @@ if (Ready) {return (
   <img src ={Dataweather.icon} alt ={Dataweather.description}/>
   <br></br>
   <h2>{Math.round(Dataweather.temperature)}°C|°F </h2>
-  <h3>{Dataweather.city}</h3>
+  <h3>{Message}</h3>
   <br></br>
   <span>Humidity:{Dataweather.Humidity}% :</span>
   <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
@@ -53,7 +55,7 @@ if (Ready) {return (
 
  <form onSubmit={handleSubmit}>
 
-  <input type ="search" placeholder="Enter a city" onclick={updateCity}/>
+  <input type ="search" placeholder="Enter a city" onChange={updateCity}/>
 
    <input type ="submit"  value ="Search"/>
  </form>
