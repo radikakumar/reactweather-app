@@ -22,7 +22,7 @@ icon:`http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`,
 description: response.data.weather[0].description,
 })}
 
-function Search(){
+function Search(city){
   let key= "2f9f7ec47cab1795a041f2ec45034bf2"
   let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(Url).then(displayWeather); 
@@ -30,7 +30,7 @@ function Search(){
 }
 function handleSubmit(event){
   event.preventDefault();
-  Search();
+  Search(city);
 }
 
 function updateCity (event){
@@ -84,7 +84,7 @@ if (Ready) {return (
 
 
 } else {
-  Search();
+  Search(city);
  return   (
   <Loader
     type="Audio"
