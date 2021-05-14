@@ -24,7 +24,7 @@ description: response.data.weather[0].description,
 
 if (Ready) {return (
   <div className= "container">
-  <img src ={Dataweather.icon} alt ={Dataweather.description}/>
+  <img src ={Dataweather.icon} alt ="cloudy"/>
   <br></br>
   <h2>{Math.round(Dataweather.temperature)}°C|°F </h2>
   <h3>{Dataweather.city}</h3>
