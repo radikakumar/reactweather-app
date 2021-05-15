@@ -11,8 +11,8 @@ let [Dataweather,setDataweather]= useState({});
 let [city, setCity] = useState(props.defaultCity);
 let [Message,setMessage]=useState("");
 function displayWeather(response){
-  console.log(response.data);
-setReady(true);
+  console.log(response.data)
+setReady(true)
 setDataweather({
 temperature:response.data.main.temp,
 Humidity: response.data.main.humidity,
@@ -27,7 +27,7 @@ function Search(){
   let key= "2f9f7ec47cab1795a041f2ec45034bf2"
   let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(Url).then(displayWeather);
-  setMessage(Dataweather.city); 
+  setMessage(Dataweather.city) 
    
 }
 function handleSubmit(event){
