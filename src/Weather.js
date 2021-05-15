@@ -58,7 +58,7 @@ if (Ready) {return (
 
  <form onSubmit={handleSubmit}>
 
-  <input type ="search" placeholder="Enter a city" onClick={updateCity}/>
+  <input type ="search" placeholder="Enter a city" updatechange={updateCity}/>
 
    <input type ="submit"  value ="Search"/>
  </form>
