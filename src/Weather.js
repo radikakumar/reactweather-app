@@ -24,10 +24,11 @@ description: response.data.weather[0].description,
 })}
 
 function Search(){
+  setMessage(Dataweather.city);
   let key= "2f9f7ec47cab1795a041f2ec45034bf2"
   let Url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(Url).then(displayWeather);
-  setMessage(Dataweather.city); 
+   
    
 }
 function handleSubmit(event){
