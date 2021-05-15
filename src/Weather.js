@@ -47,7 +47,7 @@ if (Ready) {return (
   <img src ={Dataweather.icon} alt ={Dataweather.description}/>
   <br></br>
   <h2>{Math.round(Dataweather.temperature)}°C|°F </h2>
-  <h3>{Message}</h3>
+  <h3>{Message=Dataweather.city}</h3>
   <br></br>
   <span>Humidity:{Dataweather.Humidity}% :</span>
   <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
