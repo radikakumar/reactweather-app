@@ -6,6 +6,7 @@ export default function Weather(props) {
   let [Ready, setReady] = useState(false);
   let [Dataweather, setDataweather] = useState({});
   let [city, setCity] = useState(props.defaultCity);
+  let [Message,setMessage]= useState("Paris");
   function displayWeather(response) {
     console.log(response.data);
     setReady(true);
@@ -23,6 +24,7 @@ export default function Weather(props) {
     let key = "2f9f7ec47cab1795a041f2ec45034bf2";
     let Url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
     axios.get(Url).then(displayWeather);
+    setMessage (Dataweather.city);
   }
   function handleSubmit(event) {
     event.preventDefault();
@@ -36,7 +38,11 @@ export default function Weather(props) {
       <div className="container">
         <img src={Dataweather.icon} alt={Dataweather.description} />
         <br></br>
-        <h2>{Math.round(Dataweather.temperature)}°C|°F </h2>
+        <h3>
+          {Message}
+        </h3>
+
+        <h3>{Math.round(Dataweather.temperature)}°C|°F </h3>
         <br></br>
         <span>Humidity:{Dataweather.Humidity}% :</span>
         <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
@@ -71,7 +77,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    Search();
+    Search(props.city);
     return <Loader type="Audio" color="#00BFFF" height={100} width={100} />;
   }
 }
