@@ -9,7 +9,7 @@ export default function Weather(props){
 let [Ready,setReady]= useState(false);
 let [Dataweather,setDataweather]= useState({});
 let [city, setCity] = useState(props.defaultCity);
-let [Message,setMessage]=useState("");
+let [Message,setMessage]=useState(null);
 function displayWeather(response){
   console.log(response.data)
 setReady(true)
