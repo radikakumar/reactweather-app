@@ -16,7 +16,7 @@ export default function Weather(props) {
       Wind: response.data.wind.speed,
       feels: response.data.main.feels_like,
       city: response.data.name,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`,
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
     });
   }
@@ -36,18 +36,19 @@ export default function Weather(props) {
   if (Ready) {
     return (
       <div className="container">
-        <img src={Dataweather.icon} alt={Dataweather.description} />
-        <br></br>
+       <div>
+         
+       </div>
+       <span> <img src={Dataweather.icon} alt={Dataweather.description} /></span>
         <h3>
         {Dataweather.city}
         </h3>
-
-        <h3>{Math.round(Dataweather.temperature)}°C|°F </h3>
+        <h4>{Math.round(Dataweather.temperature)}°C|°F </h4>
         <br></br>
         <span>Humidity:{Dataweather.Humidity}% :</span>
         <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
         <p>Feelslike: {Math.round(Dataweather.feels)}°C</p>
-        <h4>Date: Monday 10 May 2021</h4>
+        <h5>Date: Monday 10 May 2021</h5>
         <form onSubmit={handleSubmit}>
           <input
             type="search"
@@ -56,7 +57,6 @@ export default function Weather(props) {
           />
           <input type="submit" value="Search" />
         </form>
-        <br></br>
         <p>Forecast</p>
         <div className="container">
           <div className="row">
@@ -74,6 +74,7 @@ export default function Weather(props) {
             </div>
           </div>
         </div>
+      
       </div>
     );
   } else {
