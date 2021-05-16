@@ -47,8 +47,8 @@ export default function Weather(props) {
         <br></br>
         <span>Humidity:{Dataweather.Humidity}% :</span>
         <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
-        <p>Feelslike: {Math.round(Dataweather.feels)}°C</p>
-        <h5>Date: Monday 10 May 2021</h5>
+        <p>😏Feelslike: {Math.round(Dataweather.feels)}°C</p>
+        <h5>📅Date: Monday 10 May 2021</h5>
         <form onSubmit={handleSubmit}>
           <input
             type="search"
@@ -57,7 +57,7 @@ export default function Weather(props) {
           />
           <input type="submit" value="Search" />
         </form>
-        <p>Forecast</p>
+        <p>⛈️Forecast</p>
         <div className="container">
           <div className="row">
             <div className="col">
