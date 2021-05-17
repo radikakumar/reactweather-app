@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import Loader from "react-loader-spinner";
+import RevisedDate from "./RevisedDate";
+
 export default function Weather(props) {
   let [Ready, setReady] = useState(false);
   let [Dataweather, setDataweather] = useState({});
@@ -16,6 +18,7 @@ export default function Weather(props) {
       Wind: response.data.wind.speed,
       feels: response.data.main.feels_like,
       city: response.data.name,
+      date: new Date(response.data.dt*1000),
       icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
     });
@@ -48,7 +51,7 @@ export default function Weather(props) {
         <span>Humidity:{Dataweather.Humidity}% :</span>
         <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
         <p>😏Feelslike: {Math.round(Dataweather.feels)}°C</p>
-        <h5>📅Date: Monday 10 May 2021</h5>
+        <h5><RevisedDate date={Dataweather.date} /></h5>
         <form onSubmit={handleSubmit}>
           <input
             type="search"
@@ -79,6 +82,6 @@ export default function Weather(props) {
     );
   } else {
     Search();
-    return <Loader type="Audio" color="#00BFFF" height={100} width={100} />;
+    return <Loader type="Audio" color="Green" height={100} width={100} timeout={2000000}/>;
   }
 }
