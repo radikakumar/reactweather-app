@@ -17,10 +17,10 @@ if (Seconds<10) {Seconds= (`0${Seconds}`)}
     return (
      <div>
         <div>
-     `🗓️{Day} {Date} {Month}{Year} `
+     🗓️{Day} {Date} {Month}{Year} 
      </div>
      <div>
-     `⌚ {Hour}:{Minutes}:{Seconds}`
+     ⌚ {Hour}:{Minutes}:{Seconds}
      </div>
      </div>
     );
