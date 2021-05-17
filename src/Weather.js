@@ -50,7 +50,7 @@ export default function Weather(props) {
         <span>Humidity:{Dataweather.Humidity}% :</span>
         <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
         <p>😏Feelslike: {Math.round(Dataweather.feels)}°C</p>
-        <h5><RevisedDate date={(new Date)} /></h5>
+        <h5><RevisedDate date={new Date()} /></h5>
         <form onSubmit={handleSubmit}>
           <input
             type="search"
