@@ -18,7 +18,6 @@ export default function Weather(props) {
       Wind: response.data.wind.speed,
       feels: response.data.main.feels_like,
       city: response.data.name,
-      date: new Date(response.data.dt*1000),
       icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
     });
@@ -51,7 +50,7 @@ export default function Weather(props) {
         <span>Humidity:{Dataweather.Humidity}% :</span>
         <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
         <p>😏Feelslike: {Math.round(Dataweather.feels)}°C</p>
-        <h5><RevisedDate date={Dataweather.date} /></h5>
+        <h5><RevisedDate date={(new Date)} /></h5>
         <form onSubmit={handleSubmit}>
           <input
             type="search"
