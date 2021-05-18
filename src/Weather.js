@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Weather.css";
 import Loader from "react-loader-spinner";
 import RevisedDate from "./RevisedDate";
+import Tempconversion from "./Tempconversion";
 
 export default function Weather(props) {
   let [Ready, setReady] = useState(false);
@@ -13,7 +14,7 @@ export default function Weather(props) {
     console.log(response.data);
     setReady(true);
     setDataweather({
-      temperature: response.data.main.temp,
+      Temperature: response.data.main.temp,
       Humidity: response.data.main.humidity,
       Wind: response.data.wind.speed,
       feels: response.data.main.feels_like,
@@ -38,19 +39,18 @@ export default function Weather(props) {
   if (Ready) {
     return (
       <div className="container">
-       <div>
-         
-       </div>
+       <div> </div>
        <span> <img src={Dataweather.icon} alt={Dataweather.description} /></span>
         <h3>
         {Dataweather.city}
         </h3>
-        <h4>{Math.round(Dataweather.temperature)}°C|°F </h4>
-        <br></br>
+        <Tempconversion celcius= {Math.round(Dataweather.Temperature)} />
+         
+        <br/>
         <span>Humidity:{Dataweather.Humidity}% :</span>
         <span> Windspeed:{Math.round(Dataweather.Wind)}km/h</span>
         <p>😏Feelslike: {Math.round(Dataweather.feels)}°C</p>
-        <h5><RevisedDate date={new Date()} /></h5>
+        <h5><RevisedDate date={(new Date())} /></h5>
         <form onSubmit={handleSubmit}>
           <input
             type="search"
@@ -75,9 +75,8 @@ export default function Weather(props) {
               <span>Thurs: 20°C|°F </span>
             </div>
           </div>
-        </div>
-      
-      </div>
+        </div>  
+        </div> 
     );
   } else {
     Search();
