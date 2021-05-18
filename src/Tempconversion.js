@@ -6,7 +6,7 @@ let [unit,setunit]= useState ("celcius");
 
 function showcelcius (event){
 event.preventDefault();
-setunit("celcius");
+unit("celcius");
 
 }
 
