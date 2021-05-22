@@ -4,6 +4,7 @@ import "./Weather.css";
 import Loader from "react-loader-spinner";
 import RevisedDate from "./RevisedDate";
 import Tempconversion from "./Tempconversion";
+import Forecast from "./Forecast";
 
 export default function Weather(props) {
   let [Ready, setReady] = useState(false);
@@ -14,6 +15,7 @@ export default function Weather(props) {
     console.log(response.data);
     setReady(true);
     setDataweather({
+      coordinates:response.data.coord,
       Temperature: response.data.main.temp,
       Humidity: response.data.main.humidity,
       Wind: response.data.wind.speed,
@@ -59,24 +61,10 @@ export default function Weather(props) {
           />
           <input type="submit" value="Search" />
         </form>
-        <p>⛈️Forecast</p>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <span>Mon: 20°C|°F </span>
-            </div>
-            <div className="col">
-              <span>Tues: 20°C|°F </span>
-            </div>
-            <div className="col">
-              <span>Wed: 20°C|°F </span>
-            </div>
-            <div className="col">
-              <span>Thurs: 20°C|°F </span>
-            </div>
-          </div>
+        <Forecast  coordinates={Dataweather.coordinates} />
+       
         </div>  
-        </div> 
+      
     );
   } else {
     Search();
