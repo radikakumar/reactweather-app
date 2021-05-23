@@ -15,8 +15,8 @@ export default function Weather(props) {
     console.log(response.data);
     setReady(true);
     setDataweather({
-      coordinates:response.data.coord,
       Temperature: response.data.main.temp,
+      Coordinates:response.data.coord,
       Humidity: response.data.main.humidity,
       Wind: response.data.wind.speed,
       feels: response.data.main.feels_like,
@@ -61,13 +61,13 @@ export default function Weather(props) {
           />
           <input type="submit" value="Search" />
         </form>
-        <Forecast  coordinates={Dataweather.coordinates} />
+        <Forecast data={Dataweather.Coordinates}/>
        
         </div>  
       
     );
   } else {
-    Search();
+   Search();
     return <Loader type="Audio" color="Green" height={100} width={100} timeout={2000000}/>;
   }
 }
