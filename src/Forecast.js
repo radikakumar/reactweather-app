@@ -54,8 +54,8 @@ function displayresponse (response){
        
    } else {
     let key = "2f9f7ec47cab1795a041f2ec45034bf2";
-    let latitude =props.lat;
-    let longitude =props.lon;
+    let latitude =props.data.lat;
+    let longitude =props.data.lon;
     let url=`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`;
    axios.get(url).then (displayresponse);
     
