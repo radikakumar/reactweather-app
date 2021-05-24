@@ -13,10 +13,10 @@ export default function Weather(props) {
   
   function displayWeather(response) {
     console.log(response.data);
-    setReady(true);
+    
     setDataweather({
       Temperature: response.data.main.temp,
-      Coordinates:response.data.coord,
+      coordinates:response.data.coord,
       Humidity: response.data.main.humidity,
       Wind: response.data.wind.speed,
       feels: response.data.main.feels_like,
@@ -24,9 +24,10 @@ export default function Weather(props) {
       icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
     });
+    setReady(true);
   }
   function Search() {
-    let key = "67a21c9d852c60bf4d8e61c7b682d940";
+    let key = "2f9f7ec47cab1795a041f2ec45034bf2";
     let Url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
     axios.get(Url).then(displayWeather);
   
@@ -61,7 +62,7 @@ export default function Weather(props) {
           />
           <input type="submit" value="Search" />
         </form>
-        <Forecast data={Dataweather.Coordinates}/>
+        <Forecast data={Dataweather.coordinates}/>
        
         </div>  
       

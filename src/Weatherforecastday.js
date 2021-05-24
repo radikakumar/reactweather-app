@@ -11,19 +11,19 @@ export default function Weatherforecastday(props){
     return `${min}`;
    }
    function day (){
-   let date=new Date(props.date.dt*1000);
-   let day= date.getDay();
-   let days =["Sun", "Mon", "Tues", "Wed","Thurs", "Fri","Sat"]
+   let date=new Date();
    
-   return days[day];
+   let days =["Sun", "Mon", "Tues", "Wed","Thurs", "Fri","Sat"]
+    return (days[date.getDay()]);
+  
 
    }
    
     return(
     <div>
-   
+    
     <div>
-    🌤️{day()}: 
+    {day()}: 
     <span className="max">{maxTemp()}°C|</span>
     <span className="min">{minTemp()}°C</span>
      </div>

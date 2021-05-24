@@ -15,23 +15,23 @@ useEffect(()=>{
 
 function displayresponse (response){
     console.log (response);
-    setReady(true);
+   
     setForecast(response.data.daily);
-    
+    setReady(true);
    }
 
     
    if (Ready) {
        return(
     <div className="container">
-        <br></br>
+
         <p>
      ⛈️ Forecast
          </p>
-        <br></br>
+        
       <div className="row">
       <div className="col">
-            <Weatherforecastday  data={Forecast[0]} />
+            <Weatherforecastday  data={Forecast[0]}/>
         </div>
         <div className="col">
             <Weatherforecastday  data={Forecast[1]} />
