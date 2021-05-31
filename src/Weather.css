@@ -5,6 +5,7 @@ body {
     padding-top:20px;
     line-height: 20px;
     text-align: center;
+    display:-ms-flexbox;
     background: linear-gradient(220deg, rgb(35, 219, 35) 13.2%, rgb(189, 243, 167) 65%)}
    
                
